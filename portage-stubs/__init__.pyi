@@ -1,38 +1,42 @@
-from typing import Any, Dict, Literal, Optional, Sequence, TypedDict
+from typing import Any, Literal, Mapping, Sequence, TypedDict
+
+__all__ = ('db', 'root')
 
 
-class DBAPI:
-    def aux_get(
-        self, catpkg: str,
-        keys: Sequence[Literal['DEFINED_PHASES', 'DEPEND', 'EAPI', 'HDEPEND',
-                               'HOMEPAGE', 'INHERITED', 'IUSE', 'KEYWORDS',
-                               'LICENSE', 'PDEPEND', 'PROPERTIES', 'PROVIDE',
-                               'RDEPEND', 'REQUIRED_USE', 'repository',
-                               'RESTRICT', 'SRC_URI', 'SLOT']]
-    ) -> Sequence[str]:
+class dbapi:
+    def aux_get(self,
+                mycpv: str,
+                mylist: Sequence[Literal['DEFINED_PHASES', 'DEPEND', 'EAPI', 'HDEPEND', 'HOMEPAGE',
+                                         'INHERITED', 'IUSE', 'KEYWORDS', 'LICENSE', 'PDEPEND',
+                                         'PROPERTIES', 'PROVIDE', 'RDEPEND', 'REQUIRED_USE',
+                                         'repository', 'RESTRICT', 'SRC_URI', 'SLOT']],
+                mytree: str | None = ...,
+                myrepo: str | None = ...) -> Sequence[str]:
         ...
 
-    def xmatch(self,
-               level: Literal['bestmatch-visible', 'match-all-cpv-only',
-                              'match-all', 'match-visible', 'minimum-all',
-                              'minimum-visible', 'minimum-all-ignore-profile'],
-               catpkg: str) -> Sequence[str]:
+    def xmatch(self, level: Literal['bestmatch-visible', 'match-all-cpv-only', 'match-all',
+                                    'match-visible', 'minimum-all', 'minimum-visible',
+                                    'minimum-all-ignore-profile'],
+               origdep: str) -> Sequence[str] | str:
         ...
 
-    def findname(self,
-                 match: str,
-                 tree: Optional[str] = ...,
-                 repo: Optional[str] = ...) -> str:
+    def findname(self, mycpv: str, mytree: str | None = ..., myrepo: str | None = ...) -> str:
         ...
 
-    def match(self,
-              name: str,
-              use_cache: Literal[0, 1] = ...) -> Sequence[str]:
+    def findname2(
+            self,
+            mycpv: str,
+            mytree: str | None = ...,
+            myrepo: str | None = ...
+    ) -> tuple[None, Literal[0]] | tuple[str, str] | tuple[str, None]:
+        ...
+
+    def match(self, mydep: str, use_cache: Literal[0, 1] = ...) -> Sequence[str] | str:
         ...
 
 
 class PortageTree:
-    dbapi: DBAPI
+    dbapi: dbapi
 
 
 class DBRootDict(TypedDict):
@@ -41,5 +45,5 @@ class DBRootDict(TypedDict):
     virtuals: Any
 
 
-db: Dict[str, DBRootDict]
+db: Mapping[str, DBRootDict]
 root: str

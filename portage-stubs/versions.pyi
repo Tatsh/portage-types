@@ -1,9 +1,13 @@
-from typing import Literal, Tuple
+from typing import Literal
 
 
 def vercmp(a: str, b: str, silent: Literal[0, 1] = ...) -> int:
     ...
 
 
-def catpkgsplit(s: str) -> Tuple[str, ...]:
+def catpkgsplit(
+        s: str,
+        silent: Literal[0, 1] = ...,
+        eapi: str | None = ...
+) -> tuple[str, str] | tuple[str, str, str] | tuple[str, str, str, str]:
     ...

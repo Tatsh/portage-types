@@ -1,10 +1,9 @@
-.coverage
+/.coverage
+/.directory
 /.pytest_cache/
-/.vscode/.ropeproject/objectdb
-/.vscode/settings.json
-/bin/
+/MANIFEST
 /build/
 /dist/
-/doc/_build/
 /htmlcov/
-MANIFEST
+/node_modules/
+/yarn-error.log
