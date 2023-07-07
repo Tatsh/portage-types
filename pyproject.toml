@@ -42,3 +42,77 @@ ignore_whitespace = true
 line_length = 100
 order_by_type = true
 use_parentheses = true
+
+[tool.mypy]
+disallow_incomplete_defs = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_untyped_decorators = true
+disallow_subclassing_any = true
+show_column_numbers = true
+show_error_codes = true
+strict_equality = true
+strict_optional = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unreachable = true
+warn_unused_ignores = true
+
+[tool.pylint.main]
+ignore = [".git", "node_modules"]
+load-plugins = ["pylint_quotes"]
+
+[tool.pylint.basic]
+class-attribute-naming-style = "snake_case"
+good-names = [
+  "a",
+  "b",
+  "dbapi",
+  "e",
+  "f",
+  "g",
+  "i",
+  "id",
+  "j",
+  "k",
+  "m",
+  "n",
+  "r",
+  "s",
+  "x",
+  "y",
+  "z"
+]
+include-naming-hint = true
+inlinevar-naming-style = "snake_case"
+
+[tool.pylint.design]
+max-args = 8
+max-branches = 15
+max-locals = 30
+max-statements = 80
+
+[tool.pylint.format]
+expected-line-ending-format = "LF"
+
+[tool.pylint.logging]
+logging-format-style = "new"
+logging-modules = ["logging", "loguru"]
+
+[tool.pylint."messages control"]
+disable = [
+  "missing-class-docstring",
+  "missing-function-docstring",
+  "missing-module-docstring",
+  "too-few-public-methods",
+  "too-many-instance-attributes",
+  "unspecified-encoding",
+  "unused-argument",
+  "use-dict-literal"
+]
+
+[tool.pylint.refactoring]
+max-nested-blocks = 6
+
+[tool.pylint.variables]
+# allow-global-unused-variables = true

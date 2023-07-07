@@ -16,7 +16,7 @@
     "check-spelling": "cspell --no-progress './**/*'  './**/.*'",
     "format": "prettier -w './**/*.ini' './**/*.md' './**/*.toml' './**/*.yml' ./.prettierrc ./.style.yapf && poetry run isort . && poetry run yapf -ri portage-stubs/*/*.pyi portage-stubs/*.pyi",
     "mypy": "poetry run mypy portage-stubs",
-    "pylint": "poetry run pylint portage-stubs/*/*.pyi portage-stubs/*.pyi",
+    "pylint": "poetry run pylint portage-stubs/*.pyi",
     "qa": "yarn mypy && yarn pylint && yarn check-spelling && yarn check-formatting"
   },
   "version": "0.0.4"
