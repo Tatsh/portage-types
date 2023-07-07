@@ -12,12 +12,12 @@
   "name": "portage-types",
   "repository": "git@github.com:Tatsh/portage-types.git",
   "scripts": {
-    "check-formatting": "prettier -c './**/*.cfg' './**/*.ini' './**/*.md' './**/*.toml' './**/*.yml' ./.prettierrc ./.style.yapf && isort . --check && yapf -rd portage-stubs/*/*.pyi portage-stubs/*.pyi",
+    "check-formatting": "prettier -c './**/*.cfg' './**/*.ini' './**/*.md' './**/*.toml' './**/*.yml' ./.prettierrc ./.style.yapf && poetry run isort . --check && poetry run yapf -rd portage-stubs/*/*.pyi portage-stubs/*.pyi",
     "check-spelling": "cspell --no-progress './**/*'  './**/.*'",
-    "format": "prettier -w './**/*.cfg' './**/*.ini' './**/*.md' './**/*.toml' './**/*.yml' ./.prettierrc ./.style.yapf && isort . && yapf -ri portage-stubs/*/*.pyi portage-stubs/*.pyi",
-    "install-python-deps": "python -m pip install --upgrade pip && pip install poetry && poetry install && pip install -e . && pip install mypy pylint pylint-quotes pytest pytest-cov coveralls pytest-mock types-requests toml yapf",
+    "format": "prettier -w './**/*.cfg' './**/*.ini' './**/*.md' './**/*.toml' './**/*.yml' ./.prettierrc ./.style.yapf && poetry run isort . && poetry run yapf -ri portage-stubs/*/*.pyi portage-stubs/*.pyi",
+    "mypy": "poetry run mypy portage-stubs",
     "pylint": "pylint portage-stubs/*/*.pyi portage-stubs/*.pyi",
-    "qa": "yarn pylint && yarn check-spelling && yarn check-formatting"
+    "qa": "yarn mypy && yarn pylint && yarn check-spelling && yarn check-formatting"
   },
   "version": "0.0.4"
 }
