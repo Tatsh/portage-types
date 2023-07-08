@@ -114,8 +114,9 @@ disable = [
 [tool.pylint.refactoring]
 max-nested-blocks = 6
 
-# [tool.pylint.variables]
-# allow-global-unused-variables = true
+[tool.pylint.variables]
+allow-global-unused-variables = false
+
 [tool.yapf]
 align_closing_bracket_with_visual_indent = true
 allow_multiline_dictionary_keys = false
