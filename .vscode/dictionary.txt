@@ -40,10 +40,12 @@ dedented
 delslice
 dets
 distutils
+docparams
 docstrings
 docutils
 downloaders
 ecda
+elif
 endregion
 epub
 errnote
@@ -118,6 +120,7 @@ nopart
 noplaylist
 noprogress
 noresizebuffer
+numpy
 objectdb
 offtopic
 oneshot
