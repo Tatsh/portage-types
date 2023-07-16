@@ -29,5 +29,5 @@
     "pylint": "poetry run pylint .",
     "qa": "yarn mypy && yarn pylint && yarn check-spelling && yarn check-formatting"
   },
-  "version": "0.0.1"
+  "version": "0.0.2"
 }
