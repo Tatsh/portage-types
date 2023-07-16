@@ -160,6 +160,7 @@ reqtimeout
 restrictfilenames
 ropeproject
 rstcheck
+rtfd
 rtmp
 rtorrent
 rtsp

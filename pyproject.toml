@@ -1,6 +1,6 @@
 [tool.poetry]
 authors = ["Andrew Udvare <audvare@gmail.com>"]
-classifiers = ['Typing :: Typed']
+classifiers = ["Typing :: Typed"]
 description = "Typing stubs for Portage"
 license = "MIT"
 name = "portage-types"
@@ -38,7 +38,6 @@ requires = ["poetry-core"]
 case_sensitive = true
 combine_as_imports = true
 from_first = true
-ignore_whitespace = true
 line_length = 100
 order_by_type = true
 use_parentheses = true
@@ -59,7 +58,7 @@ warn_unreachable = true
 warn_unused_ignores = true
 
 [tool.pylint.main]
-ignore = [".git", "node_modules"]
+ignore = [".git", "node_modules", "*.pyi"]
 load-plugins = [
   "pylint.extensions.bad_builtin",
   "pylint.extensions.check_elif",
@@ -77,28 +76,11 @@ load-plugins = [
   "pylint.extensions.set_membership",
   "pylint_quotes"
 ]
+recursive = true
 
 [tool.pylint.basic]
 class-attribute-naming-style = "snake_case"
-good-names = [
-  "a",
-  "b",
-  "dbapi",
-  "e",
-  "f",
-  "g",
-  "i",
-  "id",
-  "j",
-  "k",
-  "m",
-  "n",
-  "r",
-  "s",
-  "x",
-  "y",
-  "z"
-]
+good-names = ["dbapi", "e", "f", "g", "i", "id", "j", "k", "m", "n", "r", "x", "y", "z"]
 include-naming-hint = true
 inlinevar-naming-style = "snake_case"
 
@@ -145,6 +127,9 @@ default-docstring-type = "numpy"
 
 [tool.pylint.refactoring]
 max-nested-blocks = 6
+
+[tool.pytest.ini_options]
+mock_use_standalone_module = true
 
 [tool.rstcheck]
 ignore_directives = "automodule"

@@ -1,23 +1,33 @@
 {
+  "bugs": {
+    "url": "https://github.com/Tatsh/portage-types/issues"
+  },
   "contributors": [
     "Andrew Udvare <audvare@gmail.com>"
   ],
   "devDependencies": {
     "cspell": "^6.31.1",
+    "markdownlint-cli2": "^0.8.1",
     "prettier": "^2.8.8",
     "prettier-plugin-ini": "^1.1.0",
     "prettier-plugin-toml": "^0.3.1"
   },
   "license": "MIT",
   "name": "portage-types",
+  "prettier": {
+    "endOfLine": "lf",
+    "iniSpaceAroundEquals": true,
+    "printWidth": 100,
+    "singleQuote": true
+  },
   "repository": "git@github.com:Tatsh/portage-types.git",
   "scripts": {
-    "check-formatting": "prettier -c './**/*.ini' './**/*.md' './**/*.toml' './**/*.yml' ./.prettierrc && poetry run isort . --check && poetry run yapf -rd portage-stubs/*/*.pyi portage-stubs/*.pyi",
-    "check-spelling": "cspell --no-progress './**/*'  './**/.*'",
-    "format": "prettier -w './**/*.ini' './**/*.md' './**/*.toml' './**/*.yml' ./.prettierrc && poetry run isort . && poetry run yapf -ri portage-stubs/*/*.pyi portage-stubs/*.pyi",
+    "check-formatting": "prettier -c . && poetry run isort . --check && poetry run yapf -prd . && markdownlint-cli2 '**/*.md' '#node_modules'",
+    "check-spelling": "cspell --no-progress .",
+    "format": "prettier -w . && poetry run isort . && poetry run yapf -pri . && markdownlint-cli2 --fix '**/*.md' '#node_modules'",
     "mypy": "poetry run mypy portage-stubs",
-    "pylint": "poetry run pylint portage-stubs/*.pyi",
+    "pylint": "poetry run pylint .",
     "qa": "yarn mypy && yarn pylint && yarn check-spelling && yarn check-formatting"
   },
-  "version": "0.0.4"
+  "version": "0.0.1"
 }
