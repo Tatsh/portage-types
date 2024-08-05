@@ -28,7 +28,7 @@ optional = true
 [tool.poetry.group.docs.dependencies]
 docutils = ">=0.20.1,<0.22.0"
 esbonio = "^0.16.1"
-sphinx = "^7.0.1"
+sphinx = ">=7.0.1,<9.0.0"
 
 [build-system]
 build-backend = "poetry.core.masonry.api"
