@@ -20,7 +20,7 @@ pylint = ">=2.17.4,<4.0.0"
 pylint-quotes = "^0.2.3"
 rope = "^1.9.0"
 toml = "^0.10.2"
-yapf = "^0.40.1"
+yapf = ">=0.40.1,<0.44.0"
 
 [tool.poetry.group.docs]
 optional = true
