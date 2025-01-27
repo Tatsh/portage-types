@@ -1,6 +1,7 @@
 # pylint: disable=unused-argument
 from typing import Literal
 
+
 def vercmp(a: str, b: str, silent: Literal[0, 1] = ...) -> int | None:
     ...
 
