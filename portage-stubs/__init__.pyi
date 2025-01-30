@@ -17,8 +17,8 @@ class dbapi:
         ...
 
     def xmatch(self, level: Literal['bestmatch-visible', 'match-all-cpv-only', 'match-all',
-                               'match-visible', 'minimum-all', 'minimum-visible',
-                               'minimum-all-ignore-profile'],
+                                    'match-visible', 'minimum-all', 'minimum-visible',
+                                    'minimum-all-ignore-profile'],
                 origdep: str) -> Union[Sequence[str], str]:
         ...
 
@@ -33,7 +33,8 @@ class dbapi:
     ) -> tuple[None, Literal[0]] | tuple[str, str] | tuple[str, None]:
         ...
 
-    def match(self, mydep: str, use_cache: Literal[0, 1] = 1) -> Sequence[str] | str: ...
+    def match(self, mydep: str, use_cache: Literal[0, 1] = 1) -> list[str] | str:
+        ...
 
 
 class PortageTree:
