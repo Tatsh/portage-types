@@ -1,6 +1,6 @@
 # pylint: disable=too-few-public-methods,unused-argument
-from typing import Any, Literal, Mapping, TypedDict, Union, Optional
 from collections.abc import Sequence
+from typing import Any, Literal, Mapping, TypedDict, Union, Optional
 
 __all__ = ('db', 'root', 'settings')
 
@@ -12,31 +12,28 @@ class dbapi:
                                      'INHERITED', 'IUSE', 'KEYWORDS', 'LICENSE', 'PDEPEND',
                                      'PROPERTIES', 'PROVIDE', 'RDEPEND', 'REQUIRED_USE',
                                      'repository', 'RESTRICT', 'SRC_URI', 'SLOT']],
-                mytree: str | None = None,
-                myrepo: str | None = None) -> list[str]:
+                mytree: str | None = ...,
+                myrepo: str | None = ...) -> list[str]:
         ...
 
-    def xmatch(self,
-                level: Literal['bestmatch-visible', 'match-all-cpv-only', 'match-all',
+    def xmatch(self, level: Literal['bestmatch-visible', 'match-all-cpv-only', 'match-all',
                                'match-visible', 'minimum-all', 'minimum-visible',
-                               'minimum-all-ignore-profile'], origdep: str,
-                mydep: type[DeprecationWarning] = ...,
-                mykey: type[DeprecationWarning] = ...,
-                mylist: type[DeprecationWarning] = ...) -> Sequence[str] | str:
+                               'minimum-all-ignore-profile'],
+                origdep: str) -> Union[Sequence[str], str]:
         ...
 
-    def findname(self, mycpv: str, mytree: str | None = None, myrepo: str | None = None) -> str:
+    def findname(self, mycpv: str, mytree: str | None = ..., myrepo: str | None = ...) -> str:
         ...
 
     def findname2(
             self,
             mycpv: str,
-            mytree: str | None = None,
-            myrepo: str | None = None
-    ) -> tuple[None, int] | tuple[str, str] | tuple[str, None]:
+            mytree: str | None = ...,
+            myrepo: str | None = ...
+    ) -> tuple[None, Literal[0]] | tuple[str, str] | tuple[str, None]:
         ...
 
-    def match(self, mydep: str, use_cache: int = 1) -> Sequence[str] | str: ...
+    def match(self, mydep: str, use_cache: Literal[0, 1] = 1) -> Sequence[str] | str: ...
 
 
 class PortageTree:
@@ -69,7 +66,7 @@ class config:
     def __setitem__(self, key: str, value: str) -> None: ...
     def __delitem__(self, key: str) -> None: ...
     def __iter__(self) -> str: ...
-    def get(self, k: str, x: Optional[Any] = None) -> Optional[Any]: ...
+    def get(self, k: str, x: Any = ...) -> Any: ...
     def __len__(self) -> int: ...
 
 
@@ -79,20 +76,20 @@ def doebuild(
                  'test','install','prepare','clean','cleanrm','depend', 'digest',
                  'fetch','fetchall','help','manifest','qmerge','postinst','postrm',
                  'preinst','prepare','prerm','setup']= ...,
-    settings:Optional[str]=None,
-    debug:Literal[0, 1]=0,
-    listonly:Literal[0, 1]=0,
-    fetchonly:Literal[0, 1]=0,
-    cleanup:Literal[0, 1]=0,
-    use_cache:Literal[0, 1]=1,
-    fetchall:Literal[0, 1]=0,
-    tree:Literal['vartree','porttree','bintree']='porttree',
-    mydbapi:Optional[str]=None,
-    vartree:Optional[str]=None,
-    prev_mtimes:Optional[str]=None,
-    fd_pipes:Optional[str]=None,
-    returnpid:Optional[int]=False,
-    returnproc:Optional[int]=False,
+    settings: str | None = ...,
+    debug:Literal[0, 1] = 0,
+    listonly:Literal[0, 1] = 0,
+    fetchonly:Literal[0, 1] = 0,
+    cleanup:Literal[0, 1] = 0,
+    use_cache:Literal[0, 1] = 1,
+    fetchall:Literal[0, 1] = 0,
+    tree:Literal['vartree','porttree','bintree'] = 'porttree',
+    mydbapi:Optional[str] = None,
+    vartree:Optional[str] = None,
+    prev_mtimes:Optional[str] = None,
+    fd_pipes:Optional[str] = None,
+    returnpid:Optional[int] = False,
+    returnproc:Optional[int] = False,
 ) -> Union[int, str, list[int]]: ...
 
 
