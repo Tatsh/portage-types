@@ -17,8 +17,7 @@ class dbapi:
 
     def xmatch(self, level: Literal['bestmatch-visible', 'match-all-cpv-only', 'match-all',
                                     'match-visible', 'minimum-all', 'minimum-visible',
-                                    'minimum-all-ignore-profile'],
-                origdep: str) -> list[str] | str:
+                                    'minimum-all-ignore-profile'], origdep: str) -> list[str] | str:
         ...
 
     def findname(self, mycpv: str, mytree: str | None = ..., myrepo: str | None = ...) -> str:
