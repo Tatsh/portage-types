@@ -1,6 +1,6 @@
 # pylint: disable=too-few-public-methods,unused-argument
 from collections.abc import Sequence
-from typing import Any, Literal, Mapping, TypedDict, Union, Optional
+from typing import Any, Literal, Mapping, TypedDict, Union
 
 __all__ = ('db', 'root', 'settings')
 
@@ -33,7 +33,7 @@ class dbapi:
     ) -> tuple[None, Literal[0]] | tuple[str, str] | tuple[str, None]:
         ...
 
-    def match(self, mydep: str, use_cache: Literal[0, 1] = 1) -> list[str] | str:
+    def match(self, mydep: str, use_cache: Literal[0, 1] = 1) -> Union[Sequence[str], str]:
         ...
 
 
@@ -47,21 +47,21 @@ class DBRootDict(TypedDict):
     virtuals: Any
 
 
-class config:
+class Config:
     def __init__(
         self,
-        clone: Optional["config"] = None,
-        mycpv: Optional[str] = None,
-        config_profile_path: Optional[str] = None,
-        config_incrementals: Optional[dict[str, str]] = None,
-        config_root: Optional[str] = None,
-        target_root: Optional[str] = None,
-        sysroot: Optional[str] = None,
-        eprefix: Optional[str] = None,
+        clone: Literal["config"] | None = ...,
+        mycpv: str | None = ...,
+        config_profile_path: str | None = ...,
+        config_incrementals: dict[str, str] | None = ...,
+        config_root: str | None = ...,
+        target_root: str | None = ...,
+        sysroot: str | None = ...,
+        eprefix: str | None = ...,
         local_config: bool = True,
-        env: Optional[dict[str, str]] = None,
+        env: dict[str, str] | None = ...,
         _unmatched_removal: bool = False,
-        repositories: Optional[list[str]] = None,
+        repositories: list[str] | None = ...,
     ) -> None: ...
     def __getitem__(self, key: str) -> str: ...
     def __setitem__(self, key: str, value: str) -> None: ...
@@ -72,28 +72,28 @@ class config:
 
 
 def doebuild(
-    myebuild:str,
-    mydo:Literal['info', 'nofetch', 'pretend', 'configure', 'compile', 'merge',
+    myebuild: str,
+    mydo: Literal['info', 'nofetch', 'pretend', 'configure', 'compile', 'merge',
                  'test','install','prepare','clean','cleanrm','depend', 'digest',
                  'fetch','fetchall','help','manifest','qmerge','postinst','postrm',
-                 'preinst','prepare','prerm','setup']= ...,
+                 'preinst','prepare','prerm','setup'] = ...,
     settings: str | None = ...,
-    debug:Literal[0, 1] = 0,
-    listonly:Literal[0, 1] = 0,
-    fetchonly:Literal[0, 1] = 0,
-    cleanup:Literal[0, 1] = 0,
-    use_cache:Literal[0, 1] = 1,
-    fetchall:Literal[0, 1] = 0,
-    tree:Literal['vartree','porttree','bintree'] = 'porttree',
-    mydbapi:Optional[str] = None,
-    vartree:Optional[str] = None,
-    prev_mtimes:Optional[str] = None,
-    fd_pipes:Optional[str] = None,
-    returnpid:Optional[int] = False,
-    returnproc:Optional[int] = False,
+    debug: Literal[0, 1] = 0,
+    listonly: Literal[0, 1] = 0,
+    fetchonly: Literal[0, 1] = 0,
+    cleanup: Literal[0, 1] = 0,
+    use_cache: Literal[0, 1] = 1,
+    fetchall: Literal[0, 1] = 0,
+    tree: Literal['vartree', 'porttree', 'bintree'] = 'porttree',
+    mydbapi: str | None = ...,
+    vartree: str | None = ...,
+    prev_mtimes: str | None = ...,
+    fd_pipes: str | None = ...,
+    returnpid: int | bool = False,
+    returnproc: int | bool = False,
 ) -> Union[int, str, list[int]]: ...
 
 
 db: Mapping[str, DBRootDict]
 root: str
-settings: config
+settings: Config
