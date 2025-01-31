@@ -1,6 +1,5 @@
 # pylint: disable=too-few-public-methods,unused-argument
-from collections.abc import Sequence
-from typing import Any, Literal, Mapping, TypedDict, Union
+from typing import Any, Literal, Mapping, TypedDict
 
 __all__ = ('db', 'root', 'settings')
 
@@ -19,7 +18,7 @@ class dbapi:
     def xmatch(self, level: Literal['bestmatch-visible', 'match-all-cpv-only', 'match-all',
                                     'match-visible', 'minimum-all', 'minimum-visible',
                                     'minimum-all-ignore-profile'],
-                origdep: str) -> Union[Sequence[str], str]:
+                origdep: str) -> list[str] | str:
         ...
 
     def findname(self, mycpv: str, mytree: str | None = ..., myrepo: str | None = ...) -> str:
@@ -33,7 +32,7 @@ class dbapi:
     ) -> tuple[None, Literal[0]] | tuple[str, str] | tuple[str, None]:
         ...
 
-    def match(self, mydep: str, use_cache: Literal[0, 1] = 1) -> Union[Sequence[str], str]:
+    def match(self, mydep: str, use_cache: Literal[0, 1] = ...) -> list[str] | str:
         ...
 
 
@@ -60,7 +59,7 @@ class Config:
         eprefix: str | None = ...,
         local_config: bool = True,
         env: dict[str, str] | None = ...,
-        _unmatched_removal: bool = False,
+        _unmatched_removal: bool = ...,
         repositories: list[str] | None = ...,
     ) -> None: ...
     def __getitem__(self, key: str) -> str: ...
@@ -76,22 +75,22 @@ def doebuild(
     mydo: Literal['info', 'nofetch', 'pretend', 'configure', 'compile', 'merge',
                  'test','install','prepare','clean','cleanrm','depend', 'digest',
                  'fetch','fetchall','help','manifest','qmerge','postinst','postrm',
-                 'preinst','prepare','prerm','setup'] = ...,
+                 'preinst','prepare','prerm','setup'],
     settings: str | None = ...,
-    debug: Literal[0, 1] = 0,
-    listonly: Literal[0, 1] = 0,
-    fetchonly: Literal[0, 1] = 0,
-    cleanup: Literal[0, 1] = 0,
-    use_cache: Literal[0, 1] = 1,
-    fetchall: Literal[0, 1] = 0,
-    tree: Literal['vartree', 'porttree', 'bintree'] = 'porttree',
+    debug: Literal[0, 1] = ...,
+    listonly: Literal[0, 1] = ...,
+    fetchonly: Literal[0, 1] = ...,
+    cleanup: Literal[0, 1] = ...,
+    use_cache: Literal[0, 1] = ...,
+    fetchall: Literal[0, 1] = ...,
+    tree: Literal['vartree', 'porttree', 'bintree'] = ...,
     mydbapi: str | None = ...,
     vartree: str | None = ...,
     prev_mtimes: str | None = ...,
     fd_pipes: str | None = ...,
-    returnpid: int | bool = False,
-    returnproc: int | bool = False,
-) -> Union[int, str, list[int]]: ...
+    returnpid: int | bool = ...,
+    returnproc: int | bool = ...,
+) -> int | str | list[int]: ...
 
 
 db: Mapping[str, DBRootDict]
