@@ -1,31 +1,21 @@
 {
   "[python]": {
-    "editor.defaultFormatter": "ms-python.python",
+    "editor.defaultFormatter": "eeyore.yapf",
+    "editor.formatOnSaveMode": "file",
     "editor.tabSize": 4
   },
   "cSpell.enabled": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
-  "editor.inlayHints.enabled": "offUnlessPressed",
   "editor.insertSpaces": true,
-  "editor.rulers": [100],
   "editor.tabSize": 2,
-  "editor.wordWrapColumn": 100,
-  "eslint.lintTask.enable": true,
-  "files.insertFinalNewline": true,
-  "files.trimFinalNewlines": true,
-  "files.trimTrailingWhitespace": true,
+  "files.eol": "\n",
   "python.analysis.autoImportCompletions": true,
   "python.analysis.completeFunctionParens": true,
-  "python.analysis.diagnosticSeverityOverrides": {
-    "reportUnknownArgumentType": "none",
-    "reportUnknownMemberType": "none",
-    "reportUnknownVariableType": "none"
-  },
   "python.analysis.importFormat": "relative",
   "python.analysis.indexing": true,
+  "python.analysis.inlayHints.callArgumentNames": "all",
   "python.analysis.inlayHints.functionReturnTypes": true,
   "python.analysis.inlayHints.pytestParameters": true,
   "python.analysis.inlayHints.variableTypes": true,
@@ -35,12 +25,7 @@
       "name": ""
     }
   ],
-  "python.analysis.stubPath": ".stubs",
-  "python.analysis.typeCheckingMode": "strict",
-  "python.formatting.provider": "yapf",
   "python.languageServer": "Pylance",
-  "python.linting.flake8Enabled": false,
-  "python.linting.pylintEnabled": true,
-  "yaml.format.printWidth": 100,
-  "esbonio.sphinx.confDir": ""
+  "python.testing.pytestArgs": ["tests"],
+  "python.testing.pytestEnabled": true
 }

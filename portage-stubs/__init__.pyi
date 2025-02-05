@@ -1,5 +1,5 @@
-# pylint: disable=too-few-public-methods,unused-argument
-from typing import Any, Literal, Mapping, TypedDict
+from collections.abc import Mapping
+from typing import Any, Literal, TypedDict
 
 __all__ = ('db', 'root', 'settings')
 
@@ -48,7 +48,7 @@ class DBRootDict(TypedDict):
 class Config:
     def __init__(
         self,
-        clone: Literal["config"] | None = ...,
+        clone: Literal['config'] | None = ...,
         mycpv: str | None = ...,
         config_profile_path: str | None = ...,
         config_incrementals: dict[str, str] | None = ...,
@@ -60,21 +60,33 @@ class Config:
         env: dict[str, str] | None = ...,
         _unmatched_removal: bool = ...,
         repositories: list[str] | None = ...,
-    ) -> None: ...
-    def __getitem__(self, key: str) -> str: ...
-    def __setitem__(self, key: str, value: str) -> None: ...
-    def __delitem__(self, key: str) -> None: ...
-    def __iter__(self) -> str: ...
-    def get(self, k: str, x: Any = ...) -> Any: ...
-    def __len__(self) -> int: ...
+    ) -> None:
+        ...
+
+    def __getitem__(self, key: str) -> str:
+        ...
+
+    def __setitem__(self, key: str, value: str) -> None:
+        ...
+
+    def __delitem__(self, key: str) -> None:
+        ...
+
+    def __iter__(self) -> str:
+        ...
+
+    def get(self, k: str, x: Any = ...) -> Any:
+        ...
+
+    def __len__(self) -> int:
+        ...
 
 
 def doebuild(
     myebuild: str,
-    mydo: Literal['info', 'nofetch', 'pretend', 'configure', 'compile', 'merge',
-                 'test','install','prepare','clean','cleanrm','depend', 'digest',
-                 'fetch','fetchall','help','manifest','qmerge','postinst','postrm',
-                 'preinst','prepare','prerm','setup'],
+    mydo: Literal['info', 'nofetch', 'pretend', 'configure', 'compile', 'merge', 'test', 'install',
+                  'prepare', 'clean', 'cleanrm', 'depend', 'digest', 'fetch', 'fetchall', 'help',
+                  'manifest', 'qmerge', 'postinst', 'postrm', 'preinst', 'prerm', 'setup'],
     settings: str | None = ...,
     debug: Literal[0, 1] = ...,
     listonly: Literal[0, 1] = ...,
@@ -89,7 +101,8 @@ def doebuild(
     fd_pipes: str | None = ...,
     returnpid: int | bool = ...,
     returnproc: int | bool = ...,
-) -> int | str | list[int]: ...
+) -> int | str | list[int]:
+    ...
 
 
 db: Mapping[str, DBRootDict]

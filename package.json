@@ -1,33 +1,117 @@
 {
-  "bugs": {
-    "url": "https://github.com/Tatsh/portage-types/issues"
+  "contributors": ["Andrew Udvare <audvare@gmail.com>"],
+  "cspell": {
+    "dictionaryDefinitions": [
+      {
+        "name": "main",
+        "path": ".vscode/dictionary.txt"
+      }
+    ],
+    "enableGlobDot": true,
+    "enabledLanguageIds": [
+      "git-commit",
+      "ignore",
+      "jinja",
+      "json",
+      "jsonc",
+      "markdown",
+      "plaintext",
+      "python",
+      "restructuredtext",
+      "text",
+      "toml",
+      "yaml",
+      "yml"
+    ],
+    "ignorePaths": [
+      "*.har",
+      "*.log",
+      ".coverage",
+      ".directory",
+      ".doctrees",
+      ".git",
+      ".vscode/extensions.json",
+      ".yarn/**/*.cjs",
+      "__pycache__",
+      "_build/**",
+      "build/**",
+      "dist/**",
+      "docs/_build/**",
+      "htmlcov/**",
+      "man/**",
+      "node_modules/**"
+    ],
+    "language": "en-GB",
+    "languageSettings": [
+      {
+        "dictionaries": ["main"],
+        "languageId": "*"
+      }
+    ]
   },
-  "contributors": [
-    "Andrew Udvare <audvare@gmail.com>"
-  ],
   "devDependencies": {
-    "cspell": "^6.31.1",
-    "markdownlint-cli2": "^0.8.1",
-    "prettier": "^2.8.8",
-    "prettier-plugin-ini": "^1.1.0",
-    "prettier-plugin-toml": "^0.3.1"
+    "@prettier/plugin-xml": "^3.4.1",
+    "cspell": "^8.17.3",
+    "markdownlint-cli2": "^0.17.2",
+    "prettier": "^3.4.2",
+    "prettier-plugin-ini": "^1.3.0",
+    "prettier-plugin-sort-json": "^4.1.1",
+    "prettier-plugin-toml": "^2.0.1",
+    "pyright": "^1.1.393",
+    "yarn-audit-fix": "^10.1.1"
   },
+  "homepage": "https://github.com/Tatsh/portage-stubs",
+  "keywords": ["gentoo", "portage", "stubs", "types", "typing"],
   "license": "MIT",
-  "name": "portage-types",
+  "markdownlint-cli2": {
+    "config": {
+      "MD033": {
+        "allowed_elements": ["kbd"]
+      },
+      "default": true,
+      "line-length": {
+        "code_blocks": false,
+        "line_length": 100
+      }
+    }
+  },
+  "name": "portage-stubs",
+  "packageManager": "yarn@4.6.0",
   "prettier": {
     "endOfLine": "lf",
     "iniSpaceAroundEquals": true,
+    "jsonRecursiveSort": true,
+    "overrides": [
+      {
+        "files": ["package.json"],
+        "options": {
+          "parser": "json"
+        }
+      }
+    ],
+    "plugins": [
+      "@prettier/plugin-xml",
+      "prettier-plugin-ini",
+      "prettier-plugin-sort-json",
+      "prettier-plugin-toml"
+    ],
     "printWidth": 100,
+    "reorderKeys": true,
     "singleQuote": true
   },
-  "repository": "git@github.com:Tatsh/portage-types.git",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Tatsh/portage-stubs.git"
+  },
   "scripts": {
-    "check-formatting": "prettier -c . && poetry run isort . --check && poetry run yapf -prd . && markdownlint-cli2 '**/*.md' '#node_modules'",
-    "check-spelling": "cspell --no-progress .",
-    "format": "prettier -w . && poetry run isort . && poetry run yapf -pri . && markdownlint-cli2 --fix '**/*.md' '#node_modules'",
-    "mypy": "poetry run mypy portage-stubs",
-    "pylint": "poetry run pylint .",
-    "qa": "yarn mypy && yarn pylint && yarn check-spelling && yarn check-formatting"
+    "check-formatting": "prettier -c './**/*.cff' './**/*.json' './**/*.md' './**/*.toml' './**/*.y*ml' && poetry run yapf -rd .",
+    "check-spelling": "cspell --no-progress './**/*'  './**/.*'",
+    "format": "prettier -w './**/*.cff' './**/*.json' './**/*.md' './**/*.toml' './**/*.y*ml' && poetry run yapf -ri .",
+    "mypy": "poetry run mypy",
+    "qa": "yarn mypy portage-stubs && yarn ruff portage-stubs && yarn check-spelling && yarn check-formatting",
+    "ruff": "poetry run ruff check --fix",
+    "ruff:fix": "poetry run ruff check --fix",
+    "test": "poetry run pytest"
   },
   "version": "0.0.2"
 }
