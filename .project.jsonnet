@@ -1,6 +1,6 @@
 local project_name = 'portage-stubs';
 local date_released = '2025-02-04';
-local version = '0.0.2';
+local version = '0.0.3';
 
 local authors = [{ name: 'Andrew Udvare', email: 'audvare@gmail.com' }];
 local citation_authors = [
