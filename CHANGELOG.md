@@ -9,6 +9,12 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.0.6]
+
+### Fixed
+
+- Return value of `portage.dbapi.portdbapi.getFetchMap`
+
 ## [0.0.5]
 
 ### Fixed

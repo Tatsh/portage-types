@@ -7,7 +7,7 @@ class portdbapi(dbapi):
     def getFetchMap(self,
                     mypkg: str,
                     useflags: Sequence[str] | None = ...,
-                    mytree: str | None = ...) -> dict[str, set[str]]:
+                    mytree: str | None = ...) -> dict[str, tuple[str, ...]]:
         ...
 
 
