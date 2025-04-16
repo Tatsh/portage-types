@@ -9,12 +9,23 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-## [0.0.3]
+## [0.0.5]
+
+### Fixed
+
+- Fixed `dbapi`, `fd_types`, `mydo`, `prev_mtimes`, `settings`, `vartree` argument types in
+  `portage.package.ebuild.doebuild.doebuild`
+
+### Removed
+
+- Removed deprecated `returnpid` argument from `portage.package.ebuild.doebuild.doebuild`
+
+## [0.0.4]
 
 ### Added
 
-- `portage.dbapi` exported from correct location `portage.dbapi.dbapi`.
-- `portage.doebuild` exported from correct location `portage.package.ebuild.doebuild`.
+- `portage.dbapi` exported from correct location `portage.dbapi`.
+- `portage.doebuild` exported from correct location `portage.package.ebuild.doebuild.doebuild`.
 - `portage.config` exported from correct location `portage.package.ebuild.config.config`.
 - `'unpack'` as a valid `mydo` argument to `doebuild`.
 - `portage.dbapi.portagetree.dbapi`
@@ -31,4 +42,4 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 - Removed fake class `Config`. Use `config` instead.
 
-[unreleased]: https://github.com/Tatsh/portage-stubs/-/compare/v0.0.4...HEAD
+[unreleased]: https://github.com/Tatsh/portage-stubs/-/compare/v0.0.5...HEAD

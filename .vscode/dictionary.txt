@@ -23,6 +23,7 @@ hdepend
 hoverxref
 htmlcov
 incrementals
+instprep
 isort
 iuse
 jinja

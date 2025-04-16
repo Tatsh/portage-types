@@ -43,7 +43,6 @@ repository = "https://github.com/Tatsh/portage-stubs"
 tag_format = "v$version"
 version_files = [
   ".wiswa.jsonnet",
-  "CHANGELOG.md",
   "CITATION.cff",
   "README.md",
   "package.json",

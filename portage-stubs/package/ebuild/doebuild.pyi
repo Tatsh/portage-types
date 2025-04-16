@@ -1,13 +1,16 @@
-from typing import Literal
+from typing import Any, Literal
+
+from portage.dbapi.porttree import portdbapi
+from .config import config
 
 
 def doebuild(
     myebuild: str,
-    mydo: Literal['clean', 'cleanrm', 'compile', 'configure', 'depend', 'digest', 'fetch',
-                  'fetchall', 'help', 'info', 'install', 'manifest', 'merge', 'nofetch', 'postinst',
-                  'postrm', 'preinst', 'prepare', 'prerm', 'pretend', 'qmerge', 'setup', 'test',
-                  'unpack'],
-    settings: str | None = ...,
+    mydo: Literal['clean', 'cleanrm', 'compile', 'config', 'configure', 'depend', 'digest', 'fetch',
+                  'fetchall', 'help', 'info', 'install', 'instprep', 'manifest', 'merge', 'nofetch',
+                  'package', 'postinst', 'postrm', 'preinst', 'prepare', 'prerm', 'pretend',
+                  'qmerge', 'rpm', 'setup', 'test', 'unmerge', 'unpack'],
+    settings: config | None = ...,
     debug: Literal[0, 1] = ...,
     listonly: Literal[0, 1] = ...,
     fetchonly: Literal[0, 1] = ...,
@@ -15,11 +18,10 @@ def doebuild(
     use_cache: Literal[0, 1] = ...,
     fetchall: Literal[0, 1] = ...,
     tree: Literal['vartree', 'porttree', 'bintree'] = ...,
-    mydbapi: str | None = ...,
-    vartree: str | None = ...,
-    prev_mtimes: str | None = ...,
-    fd_pipes: str | None = ...,
-    returnpid: int | bool = ...,
-    returnproc: int | bool = ...,
-) -> int | str | list[int]:
+    mydbapi: portdbapi | None = ...,
+    vartree: Any = ...,
+    prev_mtimes: dict[str, Any] | None = ...,
+    fd_pipes: dict[str, str] | None = ...,
+    returnproc: int | bool = ...
+) -> Literal[0, 1] | bool | list[int]:  # Missing portage.process.MultiprocessingProcess
     ...
