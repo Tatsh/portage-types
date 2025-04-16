@@ -9,6 +9,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.0.3]
+
 ### Added
 
 - `portage.dbapi` exported from correct location `portage.dbapi.dbapi`.
