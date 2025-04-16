@@ -3,7 +3,7 @@
   description: 'PEP 561 type stubs for portage.',
   keywords: ['gentoo', 'pep561', 'portage', 'stubs', 'types'],
   project_name: 'portage-stubs',
-  version: '0.0.5',
+  version: '0.0.6',
   citation+: {
     'date-released': '2025-04-16',
   },
