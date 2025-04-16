@@ -24,8 +24,10 @@
       "yml"
     ],
     "ignorePaths": [
+      "*.1",
       "*.har",
       "*.log",
+      ".*_cache/**",
       ".coverage",
       ".directory",
       ".doctrees",
@@ -57,11 +59,11 @@
     "prettier-plugin-ini": "^1.3.0",
     "prettier-plugin-sort-json": "^4.1.1",
     "prettier-plugin-toml": "^2.0.4",
-    "pyright": "^1.1.398",
+    "pyright": "^1.1.399",
     "yarn-audit-fix": "^10.1.1"
   },
-  "homepage": "https://github.com/Tatsh/portage-stubs",
-  "keywords": ["gentoo", "portage", "stubs", "types", "typing"],
+  "homepage": "https://tatsh.github.io/portage-stubs/",
+  "keywords": ["gentoo", "pep561", "portage", "stubs", "types"],
   "license": "MIT",
   "markdownlint-cli2": {
     "config": {
@@ -76,7 +78,7 @@
     }
   },
   "name": "portage-stubs",
-  "packageManager": "yarn@4.6.0",
+  "packageManager": "yarn@4.9.0",
   "prettier": {
     "endOfLine": "lf",
     "iniSpaceAroundEquals": true,
@@ -104,14 +106,16 @@
     "url": "git@github.com:Tatsh/portage-stubs.git"
   },
   "scripts": {
-    "check-formatting": "prettier -c './**/*.cff' './**/*.json' './**/*.md' './**/*.toml' './**/*.y*ml' && poetry run yapf -rd .",
-    "check-spelling": "cspell --no-progress './**/*'  './**/.*'",
-    "format": "prettier -w './**/*.cff' './**/*.json' './**/*.md' './**/*.toml' './**/*.y*ml' && poetry run yapf -ri .",
+    "check-formatting": "yarn prettier -c . && poetry run yapf -prd . && yarn markdownlint-cli2 '**/*.md' '#node_modules'",
+    "check-spelling": "yarn cspell --no-progress './**/*'  './**/.*'",
+    "format": "prettier -w . && poetry run yapf -ri . && yarn markdownlint-cli2 --fix '**/*.md' '#node_modules'",
     "mypy": "poetry run mypy",
-    "qa": "yarn mypy portage-stubs && yarn ruff portage-stubs && yarn check-spelling && yarn check-formatting",
-    "ruff": "poetry run ruff check --fix",
+    "qa": "yarn mypy . && yarn ruff . && yarn check-spelling && yarn check-formatting",
+    "regen": "poetry run wiswa",
+    "ruff": "poetry run ruff check",
     "ruff:fix": "poetry run ruff check --fix",
-    "test": "poetry run pytest"
+    "test": "poetry run pytest",
+    "test:cov": "yarn test --cov . --cov-report html --cov-report term-missing:skip-covered"
   },
   "version": "0.0.3"
 }

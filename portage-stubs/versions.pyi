@@ -1,13 +1,40 @@
-from typing import Literal  # noqa: I001
+from typing import Any, Literal
+from typing_extensions import Self
 
 
-def vercmp(a: str, b: str, silent: Literal[0, 1] = ...) -> int | None:
+def vercmp(ver1: str, ver2: str, silent: Literal[0, 1] = ...) -> int | None:
     ...
 
 
-def catpkgsplit(
-        s: str,
-        silent: Literal[0, 1] = ...,
-        eapi: str | None = ...
-) -> tuple[str, str] | tuple[str, str, str] | tuple[str, str, str, str]:
+class _pkg_str(str):  # noqa: FURB189
+    stable: bool
+
+    def __new__(cls, cpv: str) -> Self:
+        ...
+
+    def __init__(
+        self,
+        cpv: str,
+        metadata: dict[str, Any] | None = ...,
+        settings: Any = ...,
+        eapi: Any = ...,
+        repo: str | None = ...,
+        slot: str | None = ...,
+        build_time: int | None = ...,
+        build_id: str | None = ...,
+        file_size: int | None = ...,
+        mtime: int | None = ...,
+        db: Any = ...,
+        repoconfig: Any = ...,
+    ) -> None:
+        ...
+
+    @staticmethod
+    def _long(var: Any, default: int) -> int:
+        ...
+
+
+def catpkgsplit(mydata: str | _pkg_str,
+                silent: Literal[0, 1] = ...,
+                eapi: str | None = ...) -> tuple[str | None, str, str, str] | None:
     ...

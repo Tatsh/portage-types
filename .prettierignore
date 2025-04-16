@@ -1,4 +1,9 @@
+*.1
+*.j2
 *.jsonnet
+*.libjsonnet
+*.lock
+*.log
 *~
 .*_cache/
 .coverage
@@ -7,6 +12,8 @@
 /.yarn/**/*.cjs
 /.yarn/install-state.gz
 /dist/
+/docs/_build/
+/man/_static/
 __pycache__/
 htmlcov/
 node_modules/
