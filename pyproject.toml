@@ -20,7 +20,7 @@ keywords = ["gentoo", "pep561", "portage", "stubs", "types"]
 license = "MIT"
 name = "portage-stubs"
 readme = "README.md"
-version = "0.0.4"
+version = "0.0.5"
 
 [[project.authors]]
 email = "audvare@gmail.com"
