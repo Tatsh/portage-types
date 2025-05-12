@@ -1,5 +1,6 @@
 autodoc
 bestmatch
+bsky
 catpkgsplit
 cleanrm
 codeowners
